@@ -30,7 +30,7 @@ function mousePressed() {
 }
 
 function moveBall() {
-  for (let ball of theBouncingballs) {
+  for (let ball of theBouncingBalls) {
     ball.x += ball.dx;
     ball.y += ball.dy;
   
@@ -47,7 +47,7 @@ function moveBall() {
 function displayBall() {
   for (let ball of theBouncingBalls) {
     noStroke();
-    fill(theBouncingBalls.theColour)
+    fill(ball.theColour)
     ellipse(ball.x, ball.y, ball.diameter, ball.diameter);
   }
 }
