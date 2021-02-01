@@ -1,28 +1,30 @@
 // Project Title
 
-let atheon;
-let sanct;
-
+let theWalkers = [];
+let colorOptions = ["red", "orange", "blue", "limegreen"];
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
-  atheon = new Walker(width/2, height/2, "white");
-  sanct = new Walker(100, 100, "limegreen");
   background("black");
 }
 
 function draw() {
-  atheon.move();
-  atheon.display();
-  sanct.move();
-  sanct.display();
+  for(let i=0; i<theWalkers.length; i++) {
+    theWalkers[i].move();
+    theWalkers[i].display();
+  }
+}
+
+function mousePressed() {
+  let someWalker = new Walker(mouseX, mouseY, random(colorOptions));
+  theWalkers.push(someWalker);
 }
 
 class Walker {
   constructor(x, y, theColor) {
     this.x = x;
     this.y = y;
-    this.color = "theColor";
+    this.color = theColor;
     this.speed = 5;
 
   }
