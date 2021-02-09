@@ -15,6 +15,7 @@ function setup(){
   pickLocation();
 }
 
+//food location picker
 function pickLocation() {
   let cols = floor(width/sanct);
   let rows = floor(height/sanct);
@@ -34,11 +35,12 @@ function draw() {
     pickLocation();
   }
   
-  // food:
+  // food
   fill(242,242,242);
   rect(food.x, food.y, sanct, sanct);
 }
 
+//controls
 function keyPressed() {
   if (keyCode === UP_ARROW) {
     serpent.direction(0, -1);
@@ -98,7 +100,6 @@ function Snake() {
     
     this.x = this.x + this.xspeed*sanct;
     this.y = this.y + this.yspeed*sanct;
-    //avoid snake to go out of canvas
     this.x = constrain(this.x, 0, width-sanct);
     this.y = constrain(this.y, 0, height-sanct);
   };
