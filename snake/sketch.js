@@ -1,6 +1,11 @@
 let serpent;
 let sanct = 20;
 let food;
+// let munch;
+
+// function preload() {
+//   munch = loadSound("assets/munch.mp3");                   //tried adding a sound effect, but it ended up just screwing the game up. No idea why it didn't want to work.
+// }
 
 function setup(){
   createCanvas(600,600);
@@ -70,6 +75,7 @@ function Snake() {
   }
   
   this.death = function() {
+    // munch.play();
     for (let i = 0; i < this.tail.length; i++) {
       let pos = this.tail[i];
       let d = dist(this.x, this.y, pos.x, pos.y);
