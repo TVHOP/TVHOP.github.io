@@ -6,11 +6,25 @@
 // - describe what you did to take this project "above and beyond"
 
 
+let lastSwitched = 0;
+let isRed = false;
+
+
+
 function setup() {
-  createCanvas(windowWidth, windowHeight);
+  createCanvas(400, 400);
 }
 
 function draw() {
-  background(220);
-  rect(mouseX,mouseY,100,50);
+  if (isRed) {
+    background("red");
+  }
+  else {
+    background("black");
+  }
+  if (millis() > lastSwitched + 2000) {
+    isRed = !isRed;
+    lastSwitched = millis();
+  }
+  console.log(millis());
 }
