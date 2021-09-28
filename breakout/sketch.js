@@ -7,70 +7,68 @@
 
 
 //Aidan M
-//bouncy ball "Breakout" game
+//bouncy Orb "Breakout" game
 
 
-let xBall = Math.floor(Math.random() * 300) + 50;
-let yBall = 50;
+let xOrb = 50;
+let yOrb = 50;
 let horizontalSpeed = (2, 7);
 let verticalSpeed = (-7, -2);
 let score = 0;
-let state;
-
-function setup() { //makes playing field
-  createCanvas(400, 400);
+let hit;
+function setup() {
+  createCanvas(windowWidth, windowHeight);
 }
 
 
 function draw() {
 
-
   background("black"); //makes background with colour
-  fill("#1789FC");
-  rect(mouseX, 375, 90, 15); //creates the bouncer and controls
+  fill("black");
+  rect(mouseX, windowHeight-30, 90, 15); //creates the bumper at the bottom of the screen. It follows the X-coord of the mouse.
+  stroke("white");
 
   move();
-  display();
+  orbCreation();
   bounce();
 
-  paddle();
+  bumperCreation();
 
-  fill("#1789FC");
+  fill("black");
   textSize(24);
-  text("points " + score, 10, 25); //makes text on the left
+  textFont("fantasy");
+  text("points" + score, 10, 30); //makes text on the left
 }
 
 function move() {
-  xBall += horizontalSpeed;
-  yBall += verticalSpeed;
+  xOrb += horizontalSpeed;
+  yOrb += verticalSpeed;
 }
 
 
-function bounce() { //makes the bounce
+function bounce() { //creates border physics that change to match the size of the window. Width and height respectively.
 
-  if (xBall < 10 ||
-    xBall > 400 - 10) {
+  if (xOrb < 10 || xOrb > windowWidth - 10) {
     horizontalSpeed *= -1;
   }
-  if (yBall < 10 ||
-    yBall > 400 - 10) {
+  if (yOrb < 10 || yOrb > windowHeight - 10) {
     verticalSpeed *= -1;
   }
 }
 
 
 
-function display() { //creates ball and colour
-  fill("#EC0909");
-  ellipse(xBall, yBall, 20, 20);
+function orbCreation() { //creates Orb and colour
+  fill("black");
+  circle(xOrb, yOrb, 20);
 }
 
-function paddle() { //allows ball to bounce on the bouncer
-  if (xBall > mouseX &&
-      xBall < mouseX + 90) &&
-      (yBall + 10 >= 375);
-    horizontalSpeed *= -1;
-    verticalSpeed *= -1;
+function bumperCreation() { 
+  hit = collideRectCircle(mouseX, windowHeight-30, 90, 15, xOrb, yOrb, 20); //sets conditions for a 'hit' to occur.
+  if (hit) {
+    yOrb + 10 >= 375;
+    horizontalSpeed *= 1;      //creates a bounce when contact with bumper is made
+    verticalSpeed *= -1;       //same thing.
     score++;
 
   }
