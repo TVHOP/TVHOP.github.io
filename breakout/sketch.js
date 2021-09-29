@@ -1,13 +1,9 @@
-// Project Title
-// Your Name
+// WIP
+// Aidan
 // Date
 //
 // Extra for Experts:
 // - describe what you did to take this project "above and beyond"
-
-
-//Aidan M
-//bouncy Orb "Breakout" game
 
 
 let xOrb = 50;
@@ -16,6 +12,7 @@ let horizontalSpeed = (2, 7);
 let verticalSpeed = (-7, -2);
 let score = 0;
 let hit;
+
 function setup() {
   createCanvas(windowWidth, windowHeight);
 }
@@ -23,7 +20,7 @@ function setup() {
 
 function draw() {
 
-  background("black"); //makes background with colour
+  background("white"); //makes background with colour
   fill("black");
   rect(mouseX, windowHeight-30, 90, 15); //creates the bumper at the bottom of the screen. It follows the X-coord of the mouse.
   stroke("white");
@@ -31,16 +28,17 @@ function draw() {
   move();
   orbCreation();
   bounce();
-
   bumperCreation();
+  mousePressed();
+
 
   fill("black");
-  textSize(24);
+  textSize(30);
   textFont("fantasy");
-  text("points" + score, 10, 30); //makes text on the left
+  text("score:   " + score, windowWidth/2, 30); //makes text on the left
 }
 
-function move() {
+function move() { //allows movement for the orb
   xOrb += horizontalSpeed;
   yOrb += verticalSpeed;
 }
@@ -72,4 +70,8 @@ function bumperCreation() {
     score++;
 
   }
+}
+
+function mousePressed() {
+  orbCreation();
 }
