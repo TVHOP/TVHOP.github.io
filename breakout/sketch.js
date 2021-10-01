@@ -8,8 +8,8 @@
 
 let xOrb = 50;
 let yOrb = 50;
-let horizontalSpeed = (2, 7);
-let verticalSpeed = (-7, -2);
+let horizontalSpeed = (10, 10);
+let verticalSpeed = (-10, -10);
 let score = 0;
 let hit;
 
@@ -20,19 +20,17 @@ function setup() {
 
 function draw() {
 
-  background("white"); //makes background with colour
-  fill("black");
+  background("#473F8D"); //makes background with colour
+  fill("#FFC71F");
   rect(mouseX, windowHeight-30, 90, 15); //creates the bumper at the bottom of the screen. It follows the X-coord of the mouse.
-  stroke("white");
+  noStroke();
 
   move();
   orbCreation();
   bounce();
   bumperCreation();
-  mousePressed();
 
-
-  fill("black");
+  fill("#FFF70A");
   textSize(30);
   textFont("fantasy");
   text("score:   " + score, windowWidth/2, 30); //makes text on the left
@@ -57,12 +55,12 @@ function bounce() { //creates border physics that change to match the size of th
 
 
 function orbCreation() { //creates Orb and colour
-  fill("black");
+  fill("#D61F22");
   circle(xOrb, yOrb, 20);
 }
 
 function bumperCreation() { 
-  hit = collideRectCircle(mouseX, windowHeight-30, 90, 15, xOrb, yOrb, 20); //sets conditions for a 'hit' to occur.
+  hit = collideRectCircle(mouseX, windowHeight-30, 90, 15, xOrb, yOrb, 20); //sets conditions for a "hit" to occur.
   if (hit) {
     yOrb + 10 >= 375;
     horizontalSpeed *= 1;      //creates a bounce when contact with bumper is made
@@ -72,6 +70,6 @@ function bumperCreation() {
   }
 }
 
-function mousePressed() {
-  orbCreation();
-}
+// function fail() {
+//   if 
+// }
