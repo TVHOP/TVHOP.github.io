@@ -13,8 +13,11 @@ let verticalSpeed = (-10, -10);
 let score = 0;
 let hit;
 
+let epicMusic;
+
 function setup() {
   createCanvas(windowWidth, windowHeight);
+  epicMusic = loadSound("assets/crashTheme.mp3");
 }
 
 
@@ -70,6 +73,8 @@ function bumperCreation() {
   }
 }
 
-// function fail() {
-//   if 
-// }
+function mousePressed() {
+  epicMusic.play();
+}
+
+
