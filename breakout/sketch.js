@@ -1,9 +1,9 @@
-// WIP
+// breakout without the break
 // Aidan
-// Date
+// October 4th, 2021
 //
 // Extra for Experts:
-// - describe what you did to take this project "above and beyond"
+// Music linked to mouse trigger (line 76-78)
 
 
 let xOrb = 50;
