@@ -14,6 +14,21 @@ function draw() {
   displayGrid();
 }
 
+function mousePressed() {
+  let cellWidth = width/gridSize;
+  let cellHeight = height/gridSize;
+
+  let cellX = Math.floor(mouseX/cellWidth);
+  let cellY = Math.floor(mouseY/cellHeight);
+
+  if(grid[cellY][cellX] === 1) {
+    grid[cellY][cellX] = 0;
+  }
+  else if(grid[cellY][cellX] === 0) {
+    grid[cellY][cellX] = 1;
+  }
+}
+
 function displayGrid() {
   let cellWidth = width/gridSize;
   let cellHeight = height/gridSize;
@@ -65,6 +80,6 @@ function keyPressed() {
   }
 }
 
-function mousePressed() {
-  setup();
-}
+// function mousePressed() {
+//   setup();
+// }
