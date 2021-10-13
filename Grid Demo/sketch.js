@@ -1,12 +1,15 @@
 
 
 
-let gridSize = 75;
+let gridSize = 50;
 let grid;
+
+let soundEffect;
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
   grid = createRandom2DArray(gridSize,gridSize);
+  soundEffect = loadSound("assets/bruhMoment.mp3");
 }
 
 function draw() {
@@ -27,6 +30,7 @@ function mousePressed() {
   else if(grid[cellY][cellX] === 0) {
     grid[cellY][cellX] = 1;
   }
+  soundEffect.play();
 }
 
 function displayGrid() {
