@@ -37,10 +37,10 @@ function mousePressed() {
   let cellY = Math.floor(mouseY/cellHeight);
 
   swap(cellX, cellY);
-  swap(cellX+1, cellY);
-  swap(cellX-1, cellY);
-  swap(cellX,cellY+1);
-  swap(cellX,cellY-1);
+  // swap(cellX+1, cellY);
+  // swap(cellX-1, cellY);
+  // swap(cellX,cellY+1);
+  // swap(cellX,cellY-1);
 }
 
 function swap(x,y) {
