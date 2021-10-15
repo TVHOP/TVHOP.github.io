@@ -1,6 +1,7 @@
 let grid = [];
 let gridSize = 40;
 let cellWidth, cellHeight;
+let autoPlay = false;
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
@@ -11,6 +12,9 @@ function setup() {
 
 function draw() {
   background(220);
+  if (autoPlay && frameCount % 10 === 0) {
+    nextTurn();
+  }
   displayGrid();
 }
 
@@ -37,7 +41,49 @@ function keyPressed() {
   if (key === "r") {
     grid=createRandom2DArray(gridSize,gridSize);
   }
-  
+  if (key === " ") {
+    nextTurn();
+  }
+  if (key === "p") {
+    autoPlay = !autoPlay;
+  }
+}
+
+function nextTurn() {
+  let newBoard = createEmpty2DArray(gridSize,gridSize);
+  for (let y=0; y<gridSize; y++) {
+    for (let x=0; x<gridSize; x++) {
+      let neighbours = 0;
+
+      for (let i=-1; i<=1; i++) {
+        for (let j=-1; j<=1; j++) {
+          if (y+i>=0 && x+j>=0 &&y+i<gridSize && x+j<gridSize) {
+            neighbours += grid[y+i][x+j];
+          }
+          
+        }
+      }
+      neighbours -= grid[y][x];
+
+      if (grid[y][x] === 1) {
+        if (neighbours === 2 || neighbours === 3) {
+          newBoard[y][x] = 1;
+        }
+        else {
+          newBoard[y][x] = 0;
+        }
+      }
+      if (grid[y][x] === 0) {
+        if (neighbours === 3) {
+          newBoard[y][x] = 1;
+        }
+        else {
+          newBoard[y][x] = 0;
+        }
+      }
+    }
+  }
+  grid = newBoard;
 }
 
 function mousePressed()  {
