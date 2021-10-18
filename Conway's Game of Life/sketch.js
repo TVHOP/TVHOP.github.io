@@ -1,7 +1,12 @@
 let grid = [];
-let gridSize = 40;
+let gridSize = 60;
 let cellWidth, cellHeight;
 let autoPlay = false;
+let gun;
+
+function preload() {
+  let gun = loadJSON("assets/GosperGun.json");
+}
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
@@ -12,7 +17,7 @@ function setup() {
 
 function draw() {
   background(220);
-  if (autoPlay && frameCount % 10 === 0) {
+  if (autoPlay && frameCount % 1 === 0) {
     nextTurn();
   }
   displayGrid();
@@ -46,6 +51,9 @@ function keyPressed() {
   }
   if (key === "p") {
     autoPlay = !autoPlay;
+  }
+  if (key === "g") {
+    grid = gun;
   }
 }
 
