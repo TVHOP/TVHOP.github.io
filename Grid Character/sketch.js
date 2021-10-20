@@ -1,20 +1,21 @@
 let grid = [];
-let gridSize = 20;
+let gridSize = 50;
 let cellWidth, cellHeight;
 
-let level;
+// let level;
 let playerX = 0;
 let playerY = 0;
 
-function preload() {
-  level = loadJSON("assets/Level1.json");
-}
+// function preload() {
+//   level = loadJSON("assets/Level1.json");
+// }
 
 
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
-  grid = level;
+  grid = createRandom2DArray(gridSize, gridSize);
+  // grid = level;
   cellWidth = width/gridSize;
   cellHeight = height/gridSize;
 
@@ -99,7 +100,7 @@ function displayGrid() {
         fill("black");      
       }
       if (grid[y][x] === 9) {
-        fill("red");
+        fill("blue");
       }
       rect(x*cellWidth, y*cellHeight, cellWidth, cellHeight);
     }
