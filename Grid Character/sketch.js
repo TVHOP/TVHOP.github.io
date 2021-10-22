@@ -1,5 +1,5 @@
 let grid = [];
-let gridSize = 50;
+let gridSize = 90;
 let cellWidth, cellHeight;
 
 // let level;
@@ -102,6 +102,7 @@ function displayGrid() {
       if (grid[y][x] === 9) {
         fill("blue");
       }
+      strokeWeight(0.1);
       rect(x*cellWidth, y*cellHeight, cellWidth, cellHeight);
     }
   }
