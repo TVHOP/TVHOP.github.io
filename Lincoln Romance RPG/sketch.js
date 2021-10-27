@@ -15,6 +15,7 @@ let crownLincoln;
 let wilkesbooth;
 
 
+
 let level;
 
 
@@ -32,6 +33,7 @@ function preload() {
   defaultLincoln = loadImage("assets/defaultLincoln.jpg");
   daedricLincoln = loadImage("assets/DaedricLincoln.jpg");
   crownLincoln = loadImage("assets/crownLincoln.jpg");
+  
 }
 
 
@@ -98,6 +100,12 @@ function tryToMoveTo(newX, newY) {
       playerY = newY;
       grid[playerY][playerX] = 600;
     }
+    if (grid[newY][newX] === 3) {
+      grid[playerY][playerX] = 3;
+      playerX = newX;
+      playerY = newY;
+      grid[playerY][playerX] = 600;
+    }
   }
 
 }
@@ -112,8 +120,15 @@ function mousePressed()  {
     grid[cellY][cellX] = 1;
   }
   else if (grid[cellY][cellX] === 1) {
+    grid[cellY][cellX] = 2;
+  }
+  else if (grid[cellY][cellX] === 2) {
+    grid[cellY][cellX] = 3;
+  }
+  else if (grid[cellY][cellX] === 3) {
     grid[cellY][cellX] = 0;
   }
+
 }
 
 function displayGrid() {
