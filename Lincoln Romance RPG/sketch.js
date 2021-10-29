@@ -1,38 +1,33 @@
 let grid = [];
-let gridSize = 30;
+let gridSize = 20;
 let cellWidth, cellHeight;
 
-let flowergrass;
-let mossygrass;
-let weedygrass;
-let leafygrass;
-let houseroof;
-let stonepath;
-let woodfloor;
+let leafyGrass;
+let houseRoof;
+let stonePath;
+let woodFloor;
 let defaultLincoln;
 let daedricLincoln;
 let crownLincoln;
 let wilkesbooth;
-
-
+let ultraSwanson;
+let swansonBot;
 
 let level;
-
 
 let playerX = 0;
 let playerY = 0;
 
 function preload() {
-  flowergrass = loadImage("assets/flowergrass.png");
-  leafygrass = loadImage("assets/leafygrass.png");
-  mossygrass = loadImage("assets/mossygrass.png");
-  weedygrass = loadImage("assets/weedygrass.png");
-  stonepath = loadImage("assets/stonepath.png");
-  woodfloor = loadImage("assets/woodfloor.png");
-  houseroof = loadImage("assets/houseroof.png");
+  leafyGrass = loadImage("assets/leafygrass.png");
+  stonePath = loadImage("assets/stonepath.png");
+  woodFloor = loadImage("assets/woodfloor.png");
+  houseRoof = loadImage("assets/houseroof.png");
   defaultLincoln = loadImage("assets/defaultLincoln.jpg");
   daedricLincoln = loadImage("assets/DaedricLincoln.jpg");
   crownLincoln = loadImage("assets/crownLincoln.jpg");
+  swansonBot = loadImage("assets/swansonBot.jpg");
+  ultraSwanson = loadImage("assets/ultraSwanson.png");
   
 }
 
@@ -135,16 +130,16 @@ function displayGrid() {
   for (let y=0; y<gridSize; y++) {
     for (let x=0; x<gridSize; x++) {
       if (grid[y][x] === 0) {
-        image(stonepath,x*cellWidth, y*cellHeight, cellWidth, cellHeight);
+        image(stonePath,x*cellWidth, y*cellHeight, cellWidth, cellHeight);
       }
       if (grid[y][x] === 1) {
-        image(mossygrass,x*cellWidth, y*cellHeight, cellWidth, cellHeight);      
+        image(leafyGrass,x*cellWidth, y*cellHeight, cellWidth, cellHeight);      
       }
       if (grid[y][x] === 2) {
-        image(houseroof,x*cellWidth, y*cellHeight, cellWidth, cellHeight);
+        image(houseRoof,x*cellWidth, y*cellHeight, cellWidth, cellHeight);
       }
       if (grid[y][x] === 3) {
-        image(woodfloor,x*cellWidth, y*cellHeight, cellWidth, cellHeight);
+        image(woodFloor,x*cellWidth, y*cellHeight, cellWidth, cellHeight);
       }
       if (grid[y][x] === 600) {
         image(defaultLincoln,x*cellWidth, y*cellHeight, cellWidth, cellHeight);
