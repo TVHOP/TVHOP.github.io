@@ -2,20 +2,20 @@ let grid = [];
 let gridSize = 90;
 let cellWidth, cellHeight;
 
-// let level;
+let level;
 let playerX = 0;
 let playerY = 0;
 
-// function preload() {
-//   level = loadJSON("assets/Level1.json");
-// }
+function preload() {
+  level = loadJSON("assets/Level1.json");
+}
 
 
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
   grid = createRandom2DArray(gridSize, gridSize);
-  // grid = level;
+  grid = level;
   cellWidth = width/gridSize;
   cellHeight = height/gridSize;
 

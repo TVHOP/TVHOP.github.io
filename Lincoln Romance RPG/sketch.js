@@ -2,12 +2,14 @@ let grid = [];
 let gridSize = 20;
 let cellWidth, cellHeight;
 
+//images
 let leafyGrass;
 let houseRoof;
 let stonePath;
 let woodFloor;
 let defaultLincoln;
 let daedricLincoln;
+let gambitLincoln;
 let crownLincoln;
 let wilkesbooth;
 let ultraSwanson;
@@ -15,10 +17,14 @@ let swansonBot;
 
 let level;
 
-let playerX = 0;
+let playerX = 1;
 let playerY = 0;
 
+//loads images and maps
 function preload() {
+  level = loadJSON("assets/ANewDay.json");
+
+
   leafyGrass = loadImage("assets/leafygrass.png");
   stonePath = loadImage("assets/stonepath.png");
   woodFloor = loadImage("assets/woodfloor.png");
@@ -36,7 +42,7 @@ function preload() {
 function setup() {
   createCanvas(windowWidth, windowHeight);
   grid = createRandom2DArray(gridSize, gridSize);
-  // grid = level;
+  grid = level;
   cellWidth = width/gridSize;
   cellHeight = height/gridSize;
 
@@ -86,6 +92,7 @@ function keyPressed() {
   }
 }
 
+//attempts to move character
 function tryToMoveTo(newX, newY) {
   if (newX >= 0 && newY >= 0 && newX < gridSize && newY < gridSize) {
 
@@ -106,7 +113,7 @@ function tryToMoveTo(newX, newY) {
 }
 
 
-//switches tile on mouse click
+//rotates between tiles on mouse click
 function mousePressed()  {
   let cellX = Math.floor(mouseX/cellWidth);
   let cellY = Math.floor(mouseY/cellHeight);
