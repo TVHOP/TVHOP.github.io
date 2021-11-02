@@ -1,5 +1,6 @@
 let grid = [];
 let gridSize = 20;
+let gridCallsign;
 let cellWidth, cellHeight;
 
 //images
@@ -16,6 +17,7 @@ let ultraSwanson;
 let swansonBot;
 
 let level;
+let state;
 
 let playerX = 1;
 let playerY = 0;
@@ -47,6 +49,8 @@ function setup() {
   cellHeight = height/gridSize;
 
   grid[playerY][playerX] = 600;
+
+  
 }
 
 function draw() {
@@ -150,7 +154,6 @@ function displayGrid() {
       }
       if (grid[y][x] === 600) {
         image(defaultLincoln,x*cellWidth, y*cellHeight, cellWidth, cellHeight);
-        
       }
       strokeWeight(0.1);
     }
@@ -168,3 +171,6 @@ function createEmpty2DArray(rows,cols) {
   }
   return board;
 }
+
+
+
