@@ -1,6 +1,5 @@
 let grid = [];
 let gridSize = 20;
-let gridCallsign;
 let cellWidth, cellHeight;
 
 //images
@@ -10,13 +9,12 @@ let stonePath;
 let woodFloor;
 let defaultLincoln;
 let daedricLincoln;
-let gambitLincoln;
 let crownLincoln;
 let wilkesbooth;
 let ultraSwanson;
 let swansonBot;
 
-let level;
+let level1, level2, level3;
 let state;
 
 let playerX = 1;
@@ -24,7 +22,9 @@ let playerY = 0;
 
 //loads images and maps
 function preload() {
-  level = loadJSON("assets/ANewDay.json");
+  level1 = loadJSON("assets/ANewDay.json");
+  level2 = loadJSON("assets/TheGloriousLegion.json");
+  
 
 
   leafyGrass = loadImage("assets/leafygrass.png");
@@ -44,7 +44,11 @@ function preload() {
 function setup() {
   createCanvas(windowWidth, windowHeight);
   grid = createRandom2DArray(gridSize, gridSize);
-  grid = level;
+  // grid = level1;
+  state = "level1";
+
+
+
   cellWidth = width/gridSize;
   cellHeight = height/gridSize;
 
@@ -56,7 +60,20 @@ function setup() {
 function draw() {
   background(220);
   displayGrid();
+
+  if (state === "level1") {
+    grid = level1;
+    if (grid[4][0] === 600) {
+      state = "level2";
+    }
+  }
+  else if (state === "level2") {
+    grid = level2;
+    playerX = 18;
+    playerY = 9;
+  }
 }
+
 
 function createRandom2DArray(rows,cols) {
   let board =  [];
@@ -155,6 +172,14 @@ function displayGrid() {
       if (grid[y][x] === 600) {
         image(defaultLincoln,x*cellWidth, y*cellHeight, cellWidth, cellHeight);
       }
+      if (grid[y][x] === 720) {
+        image(ultraSwanson,x*cellWidth, y*cellHeight, cellWidth, cellHeight);
+      }
+      if (grid[y][x] === 450) {
+        image(swansonBot,x*cellWidth, y*cellHeight, cellWidth, cellHeight);
+      }
+      
+      
       strokeWeight(0.1);
     }
   }
