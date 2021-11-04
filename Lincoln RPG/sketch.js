@@ -60,18 +60,8 @@ function setup() {
 function draw() {
   background(220);
   displayGrid();
-
-  if (state === "level1") {
-    grid = level1;
-    if (grid[4][0] === 600) {
-      state = "level2";
-    }
-  }
-  else if (state === "level2") {
-    grid = level2;
-    playerX = 18;
-    playerY = 9;
-  }
+  levelSwap();
+  
 }
 
 
@@ -93,9 +83,9 @@ function createRandom2DArray(rows,cols) {
 
 //movement controls
 function keyPressed() {
-  if (key === "e") {
-    grid = createEmpty2DArray(gridSize,gridSize);
-  }
+  // if (key === "e") {
+  //   grid = createEmpty2DArray(gridSize,gridSize);
+  // }
   if (key === "r") {
     grid=createRandom2DArray(gridSize,gridSize);
   }
@@ -130,7 +120,6 @@ function tryToMoveTo(newX, newY) {
       grid[playerY][playerX] = 600;
     }
   }
-
 }
 
 
@@ -186,15 +175,30 @@ function displayGrid() {
 }
 
 //grid creation
-function createEmpty2DArray(rows,cols) {
-  let board =  [];
-  for (let y=0; y<rows; y++) {
-    board.push([]);
-    for (let x=0; x<cols; x++) {
-      board[y].push(0);
+// function createEmpty2DArray(rows,cols) {
+//   let board =  [];
+//   for (let y=0; y<rows; y++) {
+//     board.push([]);
+//     for (let x=0; x<cols; x++) {
+//       board[y].push(0);
+//     }
+//   }
+//   return board;
+// }
+
+function levelSwap() {
+  if (state === "level1") {
+    grid = level1;
+    if (grid[4][0] === 600) {
+      state = "level2";
     }
   }
-  return board;
+  else if (state === "level2") {
+    grid = level2;
+    playerX = 18;
+    playerY = 9;
+    
+  }
 }
 
 
