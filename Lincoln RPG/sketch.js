@@ -55,13 +55,14 @@ function setup() {
   grid[playerY][playerX] = 600;
 
   
+
+  
 }
 
 function draw() {
   background(220);
   displayGrid();
   levelSwap();
-  
 }
 
 
@@ -107,6 +108,8 @@ function keyPressed() {
 function tryToMoveTo(newX, newY) {
   if (newX >= 0 && newY >= 0 && newX < gridSize && newY < gridSize) {
 
+    console.log(newX, newY);
+    
     if (grid[newY][newX] === 0) {
       grid[playerY][playerX] = 0;
       playerX = newX;
