@@ -13,6 +13,9 @@ let verticalSpeed = (-10, -10);
 let score = 0;
 let hit;
 
+let bumperWidth = 90;
+let bumperHeight = 15;
+
 let epicMusic;
 
 function setup() {
@@ -25,7 +28,7 @@ function draw() {
 
   background("#473F8D"); //makes background with colour
   fill("#FFC71F");
-  rect(mouseX, windowHeight-30, 90, 15); //creates the bumper at the bottom of the screen. It follows the X-coord of the mouse.
+  rect(mouseX, windowHeight-30, bumperWidth, bumperHeight); //creates the bumper at the bottom of the screen. It follows the X-coord of the mouse.
   noStroke();
 
   move();
@@ -63,7 +66,7 @@ function orbCreation() { //creates Orb and colour
 }
 
 function bumperCreation() { 
-  hit = collideRectCircle(mouseX, windowHeight-30, 90, 15, xOrb, yOrb, 20); //sets conditions for a "hit" to occur.
+  hit = collideRectCircle(mouseX, windowHeight-30, bumperWidth, bumperHeight, xOrb, yOrb, 20); //sets conditions for a "hit" to occur.
   if (hit) {
     yOrb + 10 >= 375;
     horizontalSpeed *= 1;      //creates a bounce when contact with bumper is made
@@ -73,8 +76,13 @@ function bumperCreation() {
   }
 }
 
-function mousePressed() {
-  epicMusic.play();
+function keyPressed(){       //extends the bumper to pretty much fullscreen. a cheat button.
+  bumperWidth = windowWidth - 75;
+}
+                           
+
+function mousePressed() {    //plays epic music.
+  epicMusic.play(); 
 }
 
 
