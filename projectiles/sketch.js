@@ -20,7 +20,7 @@ function draw() {
 }
 
 function displayPlayer() {
-  fill('black');
+  fill("black");
   ellipse(playerX, playerY, 75, 75);
 }
 
@@ -29,7 +29,7 @@ function handleBullets() {
     bullet.x += bullet.dx;
     bullet.y += bullet.dy;
 
-    fill('red')
+    fill("red");
     ellipse(bullet.x, bullet.y, bullet.radius*2);
   }
 }
